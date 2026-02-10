@@ -1,19 +1,19 @@
 # SimpleTrackPy
 
-A comprehensive particle tracking tutorial using the trackpy library.
+A simple, bare-bones particle tracking tutorial using the trackpy library.
 
 ## Overview
 
-This project provides a step-by-step Jupyter notebook tutorial for particle tracking analysis using trackpy. The notebook walks through the complete workflow from loading TIF files to linking particle trajectories.
+This project provides a straightforward Jupyter notebook tutorial for particle tracking analysis using trackpy. The notebook walks through the complete workflow from loading TIF files to linking particle trajectories.
 
 ## Features
 
-- **Interactive Frame Viewer**: Explore TIF stacks with zoom/pan capabilities and intensity histograms
-- **Particle Detection**: Use trackpy's `locate()` function with interactive parameter tuning
-- **Batch Processing**: Efficiently process multiple frames with progress indicators
+- **Simple File Loading**: Browse and load TIF files using a file dialog
+- **Frame Visualization**: Display frames and intensity histograms
+- **Particle Detection**: Use trackpy's `locate()` function with adjustable parameters
+- **Batch Processing**: Efficiently process multiple frames
 - **Trajectory Linking**: Connect particles across frames into trajectories
-- **Visualization**: Interactive Plotly visualizations for all analysis steps
-- **Data Export**: Export trajectory data to CSV for further analysis
+- **Matplotlib Visualizations**: Clear, simple plots for all analysis steps
 
 ## Installation
 
@@ -26,7 +26,7 @@ pip install -e .
 Or install dependencies separately:
 
 ```bash
-pip install trackpy pims numpy pandas plotly ipywidgets jupyter pillow tifffile
+pip install trackpy pims numpy pandas matplotlib jupyter pillow tifffile
 ```
 
 ## Usage
@@ -41,10 +41,10 @@ pip install trackpy pims numpy pandas plotly ipywidgets jupyter pillow tifffile
 3. Follow the step-by-step workflow:
    - **Cell 0**: Setup and imports
    - **Cell 1**: Load TIF file with file browser
-   - **Cell 2**: Interactive frame viewer with threshold controls
+   - **Cell 2**: Display frame and intensity histogram
    - **Cell 3**: Locate particles in a single frame
    - **Cell 4**: Batch process multiple frames
-   - **Cell 5**: Link trajectories and export results
+   - **Cell 5**: Link trajectories
 
 ## Tutorial Structure
 
@@ -53,32 +53,32 @@ Import all required libraries and configure display settings.
 
 ### Cell 1: Load TIF File
 - File browser for selecting TIF files
-- Alternative file upload widget
-- Lazy loading for memory efficiency
+- Lazy loading for memory efficiency using pims
+- Simple file path display
 
-### Cell 2: Interactive Frame Viewer
-- Frame navigation slider
-- Interactive image with zoom/pan (Plotly)
-- Intensity histogram
-- Min/max threshold sliders
+### Cell 2: Display Frame and Intensity Histogram
+- View a specific frame
+- Display intensity histogram
+- Optional min/max threshold visualization
+- Simple matplotlib plots
 
 ### Cell 3: Locate Particles
-- Interactive parameter controls (diameter, minmass, etc.)
-- Annotated image showing detected particles
+- Set parameters directly in code (diameter, minmass)
+- Annotated image using trackpy's `tp.annotate()`
 - Mass distribution histogram
-- Subpixel bias diagnostic
+- Subpixel bias diagnostic using trackpy's `tp.subpx_bias()`
 
 ### Cell 4: Batch Processing
 - Process multiple frames efficiently
-- Progress indicator
+- Set frame range as variables
 - Particles per frame statistics
-- Summary visualizations
+- Simple matplotlib visualizations
 
 ### Cell 5: Link Trajectories
-- Connect particles into trajectories
-- Filter spurious short tracks
-- Interactive trajectory visualization
-- Export to CSV
+- Connect particles into trajectories using `tp.link()`
+- Filter short tracks using `tp.filter_stubs()`
+- Plot trajectories using trackpy's `tp.plot_traj()`
+- Track length statistics and visualizations
 
 ## Requirements
 
@@ -87,8 +87,7 @@ Import all required libraries and configure display settings.
 - pims >= 0.6.0
 - numpy >= 1.24.0
 - pandas >= 2.0.0
-- plotly >= 5.14.0
-- ipywidgets >= 8.0.0
+- matplotlib >= 3.7.0
 - jupyter >= 1.0.0
 - pillow >= 10.0.0
 - tifffile >= 2023.0.0
